@@ -17,13 +17,17 @@ TEMPLATE = app
 CONFIG += console
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-        c_datafusion.cpp
+        c_datafusion.cpp \
+        mainclass.cpp \
+        globals.cpp
+#        mainwindow.cpp
 
-
-HEADERS  += mainwindow.h \
+HEADERS  += \
          app_types.h \
-         c_datafusion.h
+         c_datafusion.h \
+         mainclass.h \
+         globals.h
+#         mainwindow.h
 
 FORMS    += mainwindow.ui
 
@@ -31,96 +35,96 @@ win32:CONFIG(release, debug|release): DEFINES += QT_NO_DEBUG_OUTPUT
 win32:CONFIG(debug, debug|release): DEFINES += QT_DEBUG_MODE
 
 #add OpenCV Libraries
-INCLUDEPATH += C:/OpenCv/OpenCv2_4_4/include
-INCLUDEPATH += C:/OpenCv/OpenCv2_4_4/include/opencv
-win32:CONFIG(release, debug|release): LIBS += -LC:/OpenCv/OpenCv2_4_4/Lib \
-        -lopencv_core244 \
-        -lopencv_calib3d244 \
-        -lopencv_contrib244 \
-        -lopencv_features2d244 \
-        -lopencv_flann244 \
-        -lopencv_gpu244 \
-        -lopencv_highgui244 \
-        -lopencv_imgproc244 \
-        -lopencv_legacy244 \
-        -lopencv_ml244 \
-        -lopencv_nonfree244 \
-        -lopencv_objdetect244 \
-        -lopencv_photo244 \
-        -lopencv_stitching244 \
-        -lopencv_video244 \
-        -lopencv_videostab244
-else: LIBS += -LC:/OpenCv/OpenCv2_4_4/Lib \
-        -lopencv_core244d \
-        -lopencv_calib3d244d \
-        -lopencv_contrib244d \
-        -lopencv_features2d244d \
-        -lopencv_flann244d \
-        -lopencv_gpu244d \
-        -lopencv_highgui244d \
-        -lopencv_imgproc244d \
-        -lopencv_legacy244d \
-        -lopencv_ml244d \
-        -lopencv_nonfree244d \
-        -lopencv_objdetect244d \
-        -lopencv_photo244d \
-        -lopencv_stitching244d \
-        -lopencv_video244d \
-        -lopencv_videostab244d
+INCLUDEPATH += J:\sdk\opencv-3.0.0\build\include
+INCLUDEPATH += J:\sdk\opencv-3.0.0\build\include\opencv
+win32:CONFIG(release, debug|release): LIBS += -LJ:\sdk\opencv-3.0.0\build\x64\vc12\lib \
+        -lopencv_core300 \
+        -lopencv_calib3d300 \
+        -lopencv_contrib300 \
+        -lopencv_features2d300 \
+        -lopencv_flann300 \
+        -lopencv_gpu300 \
+        -lopencv_highgui300 \
+        -lopencv_imgproc300 \
+        -lopencv_legacy300 \
+        -lopencv_ml300 \
+        -lopencv_nonfree300 \
+        -lopencv_objdetect300 \
+        -lopencv_photo300 \
+        -lopencv_stitching300 \
+        -lopencv_video300 \
+        -lopencv_videostab300
+else: LIBS += -LJ:\sdk\opencv-3.0.0\build\x64\vc12\lib \
+        -lopencv_core300d \
+        -lopencv_calib3d300d \
+        -lopencv_contrib300d \
+        -lopencv_features2d300d \
+        -lopencv_flann300d \
+        -lopencv_gpu300d \
+        -lopencv_highgui300d \
+        -lopencv_imgproc300d \
+        -lopencv_legacy300d \
+        -lopencv_ml300d \
+        -lopencv_nonfree300d \
+        -lopencv_objdetect300d \
+        -lopencv_photo300d \
+        -lopencv_stitching300d \
+        -lopencv_video300d \
+        -lopencv_videostab300d
 
 #add destination directory
-win32:CONFIG(release, debug|release): DESTDIR = D:\\Documents\\Research\\src_code\\DepthEnhancement\\bin\\r
-else: DESTDIR = D:\\Documents\\Research\\src_code\\DepthEnhancement\\bin\\d
+win32:CONFIG(release, debug|release): DESTDIR = J:\git\build-DepthEnhancement-Desktop_Qt_5_4_2_MSVC2013_64bit-Release\release
+else: DESTDIR = J:\git\build-DepthEnhancement-Desktop_Qt_5_4_2_MSVC2013_64bit-Release\release
 
-win32:CONFIG(release, debug|release): QMAKE_POST_LINK  += copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\Qt5Core.dll $${DESTDIR}\\Qt5Core.dll \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\Qt5Gui.dll $${DESTDIR}\\Qt5Gui.dll \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\Qt5OpenGL.dll $${DESTDIR}\\Qt5OpenGL.dll \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\icuin52.dll $${DESTDIR}\\icuin52.dll \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\icudt52.dll $${DESTDIR}\\icudt52.dll \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\icuuc52.dll $${DESTDIR}\\icuuc52.dll \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\Qt5Widgets.dll $${DESTDIR}\\Qt5Widgets.dll \
+win32:CONFIG(release, debug|release): QMAKE_POST_LINK  += copy J:\\sdk\\qt5\\5.4\\msvc2013_64\\bin\\Qt5Core.dll $${DESTDIR}\\Qt5Core.dll \
+                       & copy J:\\sdk\\qt5\\5.4\\msvc2013_64\\bin\\Qt5Gui.dll $${DESTDIR}\\Qt5Gui.dll \
+                       & copy J:\\sdk\\qt5\\5.4\\msvc2013_64\\bin\\Qt5OpenGL.dll $${DESTDIR}\\Qt5OpenGL.dll \
+                       & copy J:\\sdk\\qt5\\5.4\\msvc2013_64\\bin\\icuin53.dll $${DESTDIR}\\icuin53.dll \
+                       & copy J:\\sdk\\qt5\\5.4\\msvc2013_64\\bin\\icudt53.dll $${DESTDIR}\\icudt53.dll \
+                       & copy J:\\sdk\\qt5\\5.4\\msvc2013_64\\bin\\icuuc53.dll $${DESTDIR}\\icuuc53.dll \
+                       & copy J:\\sdk\\qt5\\5.4\\msvc2013_64\\bin\\Qt5Widgets.dll $${DESTDIR}\\Qt5Widgets.dll \
                        & mkdir $${DESTDIR}\\platforms \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\plugins\\platforms\\qwindows.dll $${DESTDIR}\\platforms\\qwindows.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_core244.dll $${DESTDIR}\\opencv_core244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_calib3d244.dll $${DESTDIR}\\opencv_calib3d244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_contrib244.dll $${DESTDIR}\\opencv_contrib244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_features2d244.dll $${DESTDIR}\\opencv_features2d244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_flann244.dll $${DESTDIR}\\opencv_flann244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_gpu244.dll $${DESTDIR}\\opencv_gpu244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_highgui244.dll $${DESTDIR}\\opencv_highgui244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_imgproc244.dll $${DESTDIR}\\opencv_imgproc244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_legacy244.dll $${DESTDIR}\\opencv_legacy244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_ml244.dll $${DESTDIR}\\opencv_ml244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_nonfree244.dll $${DESTDIR}\\opencv_nonfree244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_objdetect244.dll $${DESTDIR}\\opencv_objdetect244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_photo244.dll $${DESTDIR}\\opencv_photo244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_stitching244.dll $${DESTDIR}\\opencv_stitching244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_video244.dll $${DESTDIR}\\opencv_video244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_videostab244.dll $${DESTDIR}\\opencv_videostab244.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_ffmpeg244.dll $${DESTDIR}\\opencv_ffmpeg244.dll
-else: QMAKE_POST_LINK  += copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\Qt5Cored.dll $${DESTDIR}\\Qt5Cored.dll \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\Qt5Guid.dll $${DESTDIR}\\Qt5Guid.dll \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\Qt5OpenGLd.dll $${DESTDIR}\\Qt5OpenGLd.dll \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\icuin52.dll $${DESTDIR}\\icuin52.dll \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\icudt52.dll $${DESTDIR}\\icudt52.dll \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\icuuc52.dll $${DESTDIR}\\icuuc52.dll \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\Qt5Widgetsd.dll $${DESTDIR}\\Qt5Widgetsd.dll \
-                       & mkdir $${DESTDIR}\\platforms \
-                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\plugins\\platforms\\qwindowsd.dll $${DESTDIR}\\platforms\\qwindowsd.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_core244d.dll $${DESTDIR}\\opencv_core244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_calib3d244d.dll $${DESTDIR}\\opencv_calib3d244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_contrib244d.dll $${DESTDIR}\\opencv_contrib244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_features2d244d.dll $${DESTDIR}\\opencv_features2d244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_flann244d.dll $${DESTDIR}\\opencv_flann244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_gpu244d.dll $${DESTDIR}\\opencv_gpu244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_highgui244d.dll $${DESTDIR}\\opencv_highgui244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_imgproc244d.dll $${DESTDIR}\\opencv_imgproc244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_legacy244d.dll $${DESTDIR}\\opencv_legacy244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_ml244d.dll $${DESTDIR}\\opencv_ml244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_nonfree244d.dll $${DESTDIR}\\opencv_nonfree244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_objdetect244d.dll $${DESTDIR}\\opencv_objdetect244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_photo244d.dll $${DESTDIR}\\opencv_photo244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_stitching244d.dll $${DESTDIR}\\opencv_stitching244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_video244d.dll $${DESTDIR}\\opencv_video244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_videostab244d.dll $${DESTDIR}\\opencv_videostab244d.dll \
-                       & copy C:\\OpenCv\\OpenCv2_4_4\\bin\\opencv_ffmpeg244.dll $${DESTDIR}\\opencv_ffmpeg244.dll
+                       & copy J:\\sdk\\qt5\\5.4\\msvc2013_64\\plugins\\platforms\\qwindows.dll $${DESTDIR}\\platforms\\qwindows.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_core300.dll $${DESTDIR}\\opencv_core300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_calib3d300.dll $${DESTDIR}\\opencv_calib3d300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_contrib300.dll $${DESTDIR}\\opencv_contrib300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_features2d300.dll $${DESTDIR}\\opencv_features2d300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_flann300.dll $${DESTDIR}\\opencv_flann300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_gpu300.dll $${DESTDIR}\\opencv_gpu300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_highgui300.dll $${DESTDIR}\\opencv_highgui300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_imgproc300.dll $${DESTDIR}\\opencv_imgproc300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_legacy300.dll $${DESTDIR}\\opencv_legacy300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_ml300.dll $${DESTDIR}\\opencv_ml300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_nonfree300.dll $${DESTDIR}\\opencv_nonfree300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_objdetect300.dll $${DESTDIR}\\opencv_objdetect300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_photo300.dll $${DESTDIR}\\opencv_photo300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_stitching300.dll $${DESTDIR}\\opencv_stitching300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_video300.dll $${DESTDIR}\\opencv_video300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_videostab300.dll $${DESTDIR}\\opencv_videostab300.dll \
+                       & copy J:\\sdk\\opencv-3.0.0\\build\x64\\vc12\\bin\\opencv_ffmpeg300.dll $${DESTDIR}\\opencv_ffmpeg300.dll
+#else: QMAKE_POST_LINK  += copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\Qt5Cored.dll $${DESTDIR}\\Qt5Cored.dll \
+#                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\Qt5Guid.dll $${DESTDIR}\\Qt5Guid.dll \
+#                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\Qt5OpenGLd.dll $${DESTDIR}\\Qt5OpenGLd.dll \
+#                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\icuin53.dll $${DESTDIR}\\icuin53.dll \
+#                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\icudt53.dll $${DESTDIR}\\icudt53.dll \
+#                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\icuuc53.dll $${DESTDIR}\\icuuc53.dll \
+#                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\bin\\Qt5Widgetsd.dll $${DESTDIR}\\Qt5Widgetsd.dll \
+#                       & mkdir $${DESTDIR}\\platforms \
+#                       & copy C:\\Qt\\Qt5.3.2\\5.3\\msvc2010_opengl\\plugins\\platforms\\qwindowsd.dll $${DESTDIR}\\platforms\\qwindowsd.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_core300d.dll $${DESTDIR}\\opencv_core300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_calib3d300d.dll $${DESTDIR}\\opencv_calib3d300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_contrib300d.dll $${DESTDIR}\\opencv_contrib300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_features2d300d.dll $${DESTDIR}\\opencv_features2d300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_flann300d.dll $${DESTDIR}\\opencv_flann300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_gpu300d.dll $${DESTDIR}\\opencv_gpu300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_highgui300d.dll $${DESTDIR}\\opencv_highgui300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_imgproc300d.dll $${DESTDIR}\\opencv_imgproc300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_legacy300d.dll $${DESTDIR}\\opencv_legacy300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_ml300d.dll $${DESTDIR}\\opencv_ml300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_nonfree300d.dll $${DESTDIR}\\opencv_nonfree300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_objdetect300d.dll $${DESTDIR}\\opencv_objdetect300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_photo300d.dll $${DESTDIR}\\opencv_photo300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_stitching300d.dll $${DESTDIR}\\opencv_stitching300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_video300d.dll $${DESTDIR}\\opencv_video300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_videostab300d.dll $${DESTDIR}\\opencv_videostab300d.dll \
+#                       & copy J:\\sdk\\opencv-3.0.0\\build\\x64\\vc12\\bin\\opencv_ffmpeg300.dll $${DESTDIR}\\opencv_ffmpeg300.dll

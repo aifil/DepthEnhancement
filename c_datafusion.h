@@ -9,6 +9,7 @@
 
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include <vector>
 #include <iostream>
 #include "app_types.h"
 #include <ctime>
@@ -17,6 +18,7 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
 
+#include "globals.h"
 
 #define D_QUANTIZATION_RANGE_3D		300 //160 /* It's related to the range data, sigmas, etc */
 #define D_QUANTIZATION_RANGE_2D		50 //16
@@ -30,7 +32,7 @@
 #define MLF_APP_2D_RANGE			256
 #define MLF_APP_INTENSITY_RANGE		4096 /*define type size of image*/
 #define MLF_BackGround_Counter      1
-
+/*
 // FGa, from previous tool
 #define D_Fusion_ScaleFactor        3   // Scale factor: 3x
 #define D_Fusion_2D_3D_2DW			640 // By default we booked the maximum memory, considering VGA Res
@@ -52,7 +54,7 @@
 #define D_MEM_RGB_u08		D_Fusion_2D_3D_2DSIZE*3
 
 #define D_Fusion_2D_3D_MEM_SIZE		(21*D_MEM_s32_DS + 2*D_MEM_u16_DS + 5*D_MEM_u08_DS + 2*D_MEM_u16 + 7*D_MEM_u08 + D_MEM_RGB_u08) // Totally required memory
-
+*/
 // Filter type
 typedef enum
 {
@@ -234,7 +236,7 @@ public:
 private:
     T_DataFusion_St m_DataFusion;
     T_Memory_St m_StMem;
-    char m_cMem[D_Fusion_2D_3D_MEM_SIZE]; // Memory handling
+    std::vector<char> m_cMem; // Memory handling
 
     s32 Alloc_Mem(T_Memory_St* p_pSt,char **p_ppVoid, s32 p_lMemSize);
     void Compute_Q_D();

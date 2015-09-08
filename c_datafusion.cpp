@@ -10,6 +10,8 @@
 
 c_DataFusion::c_DataFusion(s16 p_sImageWidth, s16 p_sImageHeight, s16 p_sNr_shift)
 {            
+    m_cMem.resize(D_Fusion_2D_3D_MEM_SIZE); // Memory handling
+
     m_DataFusion.m_sInitOk = 0;
     m_DataFusion.m_w_original = p_sImageWidth;
     m_DataFusion.m_h_original = p_sImageHeight;
@@ -39,8 +41,8 @@ c_DataFusion::c_DataFusion(s16 p_sImageWidth, s16 p_sImageHeight, s16 p_sNr_shif
     Gaussian_Recursive_Order0_Init(m_DataFusion.m_Set.m_fSigma_spatial/(f32)(m_DataFusion.m_Set.m_sScaleFactor), m_DataFusion.m_h, m_DataFusion.m_w, &m_DataFusion.m_StGaussian);
     // Initialize memory handling
     m_StMem.m_lMemUsed = 0;
-    m_StMem.m_pMemPointer = m_cMem;
-    m_StMem.m_lMemSize = sizeof(m_cMem);
+    m_StMem.m_pMemPointer = &m_cMem[0];
+    m_StMem.m_lMemSize = m_cMem.size() * sizeof(m_cMem[0]);
     s32 l_lRet;
 
     l_lRet = Alloc_Mem(&m_StMem,(char**)&m_DataFusion.m_pdaImgBox,m_DataFusion.m_w*m_DataFusion.m_h*sizeof(s32));
