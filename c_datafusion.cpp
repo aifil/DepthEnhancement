@@ -4,7 +4,7 @@
 * Website: http://www.frederic-garcia-becerro.com
 */
 
-#include "c_datafusion.h"
+#include <c_datafusion.h>
 
 //#define MLF_ANALYSE_TIME_CONSUMPTION 1
 
@@ -2528,36 +2528,36 @@ short c_DataFusion::PWAS_RGB_Filter()
 			const s32 l_lXMax = (s32)((m_DataFusion.m_w-1)*l_ucShiftUnit);
 			const s32 l_lYMax = (s32)((m_DataFusion.m_h-1)*l_ucShiftUnit)-1;
 #ifdef	MLF_BackGround_Counter
-			const s32* p_plImgJk0_BG;
+			const s32* p_plImgJk0_BG = 0;
 			const s32* p_plImgJk0_R_BG = l_pt_Jk_R_BG[jk_0];
 			const s32* p_plImgJk0_G_BG = l_pt_Jk_G_BG[jk_0];
 			const s32* p_plImgJk0_B_BG = l_pt_Jk_B_BG[jk_0];
-			const s32* p_plImgJk0_d_BG;
+			const s32* p_plImgJk0_d_BG = 0;
 			const s32* p_plImgJk0_d_R_BG = p_plImgJk0_R_BG+m_DataFusion.m_w;
 			const s32* p_plImgJk0_d_G_BG = p_plImgJk0_G_BG+m_DataFusion.m_w;
 			const s32* p_plImgJk0_d_B_BG = p_plImgJk0_B_BG+m_DataFusion.m_w;
-			const s32* p_plImgJk1_BG;
+			const s32* p_plImgJk1_BG = 0;
 			const s32* p_plImgJk1_R_BG = l_pt_Jk_R_BG[jk_1];
 			const s32* p_plImgJk1_G_BG = l_pt_Jk_G_BG[jk_1];
 			const s32* p_plImgJk1_B_BG = l_pt_Jk_B_BG[jk_1];
-			const s32* p_plImgJk1_d_BG;
+			const s32* p_plImgJk1_d_BG = 0;
 			const s32* p_plImgJk1_d_R_BG = p_plImgJk1_R_BG+m_DataFusion.m_w;
 			const s32* p_plImgJk1_d_G_BG = p_plImgJk1_G_BG+m_DataFusion.m_w;
 			const s32* p_plImgJk1_d_B_BG = p_plImgJk1_B_BG+m_DataFusion.m_w;
 #endif
-			const s32* p_plImgJk0;
+			const s32* p_plImgJk0 = 0;
 			const s32* p_plImgJk0_R = l_pt_Jk_R[jk_0];
 			const s32* p_plImgJk0_G = l_pt_Jk_G[jk_0];
 			const s32* p_plImgJk0_B = l_pt_Jk_B[jk_0];
-			const s32* p_plImgJk0_d;
+			const s32* p_plImgJk0_d = 0;
 			const s32* p_plImgJk0_d_R = p_plImgJk0_R+m_DataFusion.m_w;
 			const s32* p_plImgJk0_d_G = p_plImgJk0_G+m_DataFusion.m_w;
 			const s32* p_plImgJk0_d_B = p_plImgJk0_B+m_DataFusion.m_w;
-			const s32* p_plImgJk1;
+			const s32* p_plImgJk1 = 0;
 			const s32* p_plImgJk1_R = l_pt_Jk_R[jk_1];
 			const s32* p_plImgJk1_G = l_pt_Jk_G[jk_1];
 			const s32* p_plImgJk1_B = l_pt_Jk_B[jk_1];
-			const s32* p_plImgJk1_d;
+			const s32* p_plImgJk1_d = 0;
 			const s32* p_plImgJk1_d_R = p_plImgJk1_R+m_DataFusion.m_w;
 			const s32* p_plImgJk1_d_G = p_plImgJk1_G+m_DataFusion.m_w;
 			const s32* p_plImgJk1_d_B = p_plImgJk1_B+m_DataFusion.m_w;
@@ -3547,43 +3547,43 @@ short c_DataFusion::UML_RGB_Filter()
 			const s32 l_lXMax = (s32)((m_DataFusion.m_w-1)*l_ucShiftUnit);
 			const s32 l_lYMax = (s32)((m_DataFusion.m_h-1)*l_ucShiftUnit)-1;
 #ifdef	MLF_BackGround_Counter
-			const s32* p_plImgJk0_BG;
+			const s32* p_plImgJk0_BG = 0;
 			const s32* p_plImgJk0_R_BG = l_pt_Jk_R_BG[jk_0];
 			const s32* p_plImgJk0_G_BG = l_pt_Jk_G_BG[jk_0];
 			const s32* p_plImgJk0_B_BG = l_pt_Jk_B_BG[jk_0];
 			const s32* p_plImgJk0_GRAY_BG = l_pt_Jk_GRAY_BG[jk_0];
-			const s32* p_plImgJk0_d_BG;
+			const s32* p_plImgJk0_d_BG = 0;
 			const s32* p_plImgJk0_d_R_BG = p_plImgJk0_R_BG+m_DataFusion.m_w;
 			const s32* p_plImgJk0_d_G_BG = p_plImgJk0_G_BG+m_DataFusion.m_w;
 			const s32* p_plImgJk0_d_B_BG = p_plImgJk0_B_BG+m_DataFusion.m_w;
 			const s32* p_plImgJk0_d_GRAY_BG = p_plImgJk0_GRAY_BG+m_DataFusion.m_w;
-			const s32* p_plImgJk1_BG;
+			const s32* p_plImgJk1_BG = 0;
 			const s32* p_plImgJk1_R_BG = l_pt_Jk_R_BG[jk_1];
 			const s32* p_plImgJk1_G_BG = l_pt_Jk_G_BG[jk_1];
 			const s32* p_plImgJk1_B_BG = l_pt_Jk_B_BG[jk_1];
 			const s32* p_plImgJk1_GRAY_BG = l_pt_Jk_GRAY_BG[jk_1];
-			const s32* p_plImgJk1_d_BG;
+			const s32* p_plImgJk1_d_BG = 0;
 			const s32* p_plImgJk1_d_R_BG = p_plImgJk1_R_BG+m_DataFusion.m_w;
 			const s32* p_plImgJk1_d_G_BG = p_plImgJk1_G_BG+m_DataFusion.m_w;
 			const s32* p_plImgJk1_d_B_BG = p_plImgJk1_B_BG+m_DataFusion.m_w;
 			const s32* p_plImgJk1_d_GRAY_BG = p_plImgJk1_GRAY_BG+m_DataFusion.m_w;
 #endif
-			const s32* p_plImgJk0;
+			const s32* p_plImgJk0 = 0;
 			const s32* p_plImgJk0_R = l_pt_Jk_R[jk_0];
 			const s32* p_plImgJk0_G = l_pt_Jk_G[jk_0];
 			const s32* p_plImgJk0_B = l_pt_Jk_B[jk_0];
 			const s32* p_plImgJk0_GRAY = l_pt_Jk_GRAY[jk_0];
-			const s32* p_plImgJk0_d;
+			const s32* p_plImgJk0_d = 0;
 			const s32* p_plImgJk0_d_R = p_plImgJk0_R+m_DataFusion.m_w;
 			const s32* p_plImgJk0_d_G = p_plImgJk0_G+m_DataFusion.m_w;
 			const s32* p_plImgJk0_d_B = p_plImgJk0_B+m_DataFusion.m_w;
 			const s32* p_plImgJk0_d_GRAY = p_plImgJk0_GRAY+m_DataFusion.m_w;
-			const s32* p_plImgJk1;
+			const s32* p_plImgJk1 = 0;
 			const s32* p_plImgJk1_R = l_pt_Jk_R[jk_1];
 			const s32* p_plImgJk1_G = l_pt_Jk_G[jk_1];
 			const s32* p_plImgJk1_B = l_pt_Jk_B[jk_1];
 			const s32* p_plImgJk1_GRAY = l_pt_Jk_GRAY[jk_1];
-			const s32* p_plImgJk1_d;
+			const s32* p_plImgJk1_d = 0;
 			const s32* p_plImgJk1_d_R = p_plImgJk1_R+m_DataFusion.m_w;
 			const s32* p_plImgJk1_d_G = p_plImgJk1_G+m_DataFusion.m_w;
 			const s32* p_plImgJk1_d_B = p_plImgJk1_B+m_DataFusion.m_w;

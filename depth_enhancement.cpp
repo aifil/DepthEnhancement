@@ -4,9 +4,9 @@
 * Website: http://www.frederic-garcia-becerro.com
 */
 
-#include "depth_enhancement.h"
+#include <depth_enhancement.h>
 // Include Data Fusion class
-#include "c_datafusion.h"
+#include <c_datafusion.h>
 
 DepthEnhancement::DepthEnhancement() : m_DataFusion(NULL) {}
 DepthEnhancement::~DepthEnhancement()
@@ -71,7 +71,12 @@ void DepthEnhancement::setSigmaCredMap(int value)
 
 void DepthEnhancement::loadDepthMap(const cv::Mat &depth_mat)
 {
-	if (depth_mat.type() == CV_32F || depth_mat.type() == CV_64F || depth_mat.type() == CV_32S)
+	if (depth_mat.channels() != 1)
+	{
+		printf("error: depth map channels != 1\n");
+		return;
+	}
+	if (depth_mat.type() == CV_32FC1 || depth_mat.type() == CV_64FC1 || depth_mat.type() == CV_32SC1)
 	{
 		double minVal, maxVal;
 		cv::minMaxLoc(depth_mat, &minVal, &maxVal);

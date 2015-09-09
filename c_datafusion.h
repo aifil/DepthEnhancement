@@ -11,14 +11,12 @@
 #include <math.h>
 #include <vector>
 #include <iostream>
-#include "app_types.h"
 #include <ctime>
 // OpenCV
-#include "opencv2/core/core.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
-#include "opencv2/highgui/highgui.hpp"
+#include <opencv2/opencv.hpp>
 
-#include "globals_enh.h"
+#include <app_types.h>
+#include <globals_enh.h>
 
 #define D_QUANTIZATION_RANGE_3D		300 //160 /* It's related to the range data, sigmas, etc */
 #define D_QUANTIZATION_RANGE_2D		50 //16

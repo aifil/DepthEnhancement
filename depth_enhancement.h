@@ -12,9 +12,9 @@
 #include <string>
 
 // OpenCV
-#include "opencv2/opencv.hpp"
+#include <opencv2/opencv.hpp>
 
-enum
+typedef enum
 {
 	RGBD_ENH = 0,
 	UML_RGB_ENH,
@@ -28,7 +28,7 @@ enum
 	NAFDU_ENH
 } Enhancement_filters;
 
-enum
+typedef enum
 {
 	GDANCE_I_RGB_RES = 0,
 	GDANCE_I_RES,
