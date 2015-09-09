@@ -67,16 +67,12 @@ public:
 	void saveResultImage(const std::string &filename, int resultIndex);
 	void printAbout();
 private:
-	void on_ui_cb_dataFusion_Display_currentIndexChanged(int index);
-
 	void updateDataFusion();
 private:
 	c_DataFusion *m_DataFusion; // Instance to Data Fusion class
 
 	cv::Mat m_cvDepthImage; // Depth map
 	cv::Mat m_cvRGBImage; // Guidance image
-	bool    m_bDepthImageLoaded; // Flag to indicate loaded depth map
-	bool    m_bRGBImageLoaded; // Flag to indicate loaded RGB image
 
 	short   m_sXRes; // X Resolution
 	short   m_sYRes; // Y Resolution
