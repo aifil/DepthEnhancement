@@ -302,12 +302,19 @@ void DepthEnhancement::printAbout()
 
 void DepthEnhancement::updateDataFusion()
 {
-	float s = m_DataFusion->GetSigmaS();
-	float r = m_DataFusion->GetSigmaR();
-	float q = m_DataFusion->GetSigmaQ();
-   
-	delete m_DataFusion;
-	m_DataFusion = NULL;
+	float s, r, q;
+	if (m_DataFusion)
+	{
+		s = m_DataFusion->GetSigmaS();
+		r = m_DataFusion->GetSigmaR();
+		q = m_DataFusion->GetSigmaQ();
+		delete m_DataFusion;
+		m_DataFusion = NULL;
+	}
+	else
+	{
+		s = r = q = 10;
+	}
 
 	m_DataFusion = new c_DataFusion(D_Fusion_2D_3D_2DW, D_Fusion_2D_3D_2DH, D_Fusion_ScaleFactor);
 	m_DataFusion->SetSigmaS(s);
