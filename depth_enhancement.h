@@ -49,17 +49,20 @@ public:
 	explicit DepthEnhancement();
 	~DepthEnhancement();
 
+	void loadImage(const cv::Mat &image_mat);
+	void loadDepthMap(const cv::Mat &depth_mat);
+	void loadDepthMap(const std::string &textfile, const cv::Size &size);
+
 	void setScaleFactor(short index);
 	void setSigmaSpatial(int value);
 	void setSigmaRange(int value);
 	void setSigmaCredMap(int value);
 
-	void loadDepthMap(const cv::Mat &depth_mat);
-	void loadImage(const cv::Mat &image_mat);
-
 	void applyFilter(int filterIndex);
 	cv::Mat resultImage(int resultIndex);
+
 	void saveResultImage(const std::string &filename, int resultIndex);
+
 	void printAbout();
 private:
 	void updateDataFusion();

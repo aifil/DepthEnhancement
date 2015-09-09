@@ -80,12 +80,48 @@ void DepthEnhancement::loadDepthMap(const cv::Mat &depth_mat)
 	{
 		double minVal, maxVal;
 		cv::minMaxLoc(depth_mat, &minVal, &maxVal);
-		depth_mat.convertTo(m_cvDepthImage, CV_16U, 65535.0/(maxVal-minVal), -minVal * 65535.0/(maxVal-minVal));
+		printf("minval = %le\n", minVal);
+		printf("maxval = %le\n", maxVal);
+		cv::Mat depth_mat2 = depth_mat.clone();
+		depth_mat2 += minVal;
+		depth_mat2 *= 65535.0 / (maxVal - minVal);
+
+		depth_mat2.convertTo(m_cvDepthImage, CV_16U);
 	}
 	else if (depth_mat.type() != CV_16U)
 	{
 		depth_mat.convertTo(m_cvDepthImage, CV_16U);
 	}
+}
+
+void DepthEnhancement::loadDepthMap(const std::string &textfile, const cv::Size &size)
+{
+	// Depth data to be filtered
+	m_cvDepthImage.create(size, CV_16U);
+
+	unsigned short* l_pBuffer = (unsigned short*)m_cvDepthImage.data;
+	std::ifstream l_fp_in;  // Declaration of input stream
+	l_fp_in.open(textfile, std::ios::in);  // Open the input file stream
+	if (l_fp_in.is_open())
+	{
+		unsigned short l_usAux;
+
+		for (short y = 0; y<m_sYRes; y++)
+		{
+			for (short x = 0; x<m_sXRes; x++)
+			{
+				l_fp_in >> l_usAux; // Depth
+				*l_pBuffer++ = l_usAux;
+			}
+		}
+		l_fp_in.close();   // close the streams
+	}
+
+	cv::Mat out8;
+	cv::Mat out = m_cvDepthImage.clone();
+	out /= 16.0;
+	out.convertTo(out8, CV_8U);
+	cv::imwrite("originDepthMap.png", out8);
 }
 
 void DepthEnhancement::loadImage(const cv::Mat &image_mat)
