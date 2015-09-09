@@ -5,6 +5,8 @@
 */
 
 #include "depth_enhancement.h"
+// Include Data Fusion class
+#include "c_datafusion.h"
 
 DepthEnhancement::DepthEnhancement() : m_DataFusion(NULL) {}
 DepthEnhancement::~DepthEnhancement()
@@ -52,19 +54,19 @@ void DepthEnhancement::setScaleFactor(short index)
 void DepthEnhancement::setSigmaSpatial(int value)
 {
 	value = std::max(0,std::min(100, value));
-	m_DataFusion->SetSigmaS(value);
+	if (m_DataFusion) m_DataFusion->SetSigmaS(value);
 }
 
 void DepthEnhancement::setSigmaRange(int value)
 {
 	value = std::max(0,std::min(100, value));
-	m_DataFusion->SetSigmaR(value);
+	if (m_DataFusion) m_DataFusion->SetSigmaR(value);
 }
 
 void DepthEnhancement::setSigmaCredMap(int value)
 {
 	value = std::max(0,std::min(100, value));
-	m_DataFusion->SetSigmaQ(value);
+	if (m_DataFusion) m_DataFusion->SetSigmaQ(value);
 }
 
 void DepthEnhancement::loadDepthMap(const cv::Mat &depth_mat)
@@ -83,7 +85,15 @@ void DepthEnhancement::loadDepthMap(const cv::Mat &depth_mat)
 
 void DepthEnhancement::loadImage(const cv::Mat &image_mat)
 {
-	m_cvRGBImage = image_mat.clone();
+	if (image_mat.type() != CV_8UC1 || image_mat.type() != CV_8UC3)
+	{
+		if (image_mat.channels() == 3)
+			image_mat.convertTo(m_cvRGBImage, CV_8UC3);
+		else
+			image_mat.convertTo(m_cvRGBImage, CV_8UC1);
+	}
+	else
+		m_cvRGBImage = image_mat.clone();
 
 	if (m_cvRGBImage.channels() == 1)
 		cv::cvtColor(m_cvRGBImage, m_cvRGBImage, CV_GRAY2RGB);

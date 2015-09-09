@@ -12,12 +12,7 @@
 #include <string>
 
 // OpenCV
-#include "opencv2/core/core.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
-#include "opencv2/highgui/highgui.hpp"
-//#include "opencv2/contrib/contrib.hpp"
-// Include Data Fusion class
-#include "c_datafusion.h"
+#include "opencv2/opencv.hpp"
 
 enum
 {
@@ -46,15 +41,15 @@ enum
 	ENH_DMAP_RES
 } Enhancement_results;
 
+class c_DataFusion;
+
 class DepthEnhancement
 {
 public:
 	explicit DepthEnhancement();
 	~DepthEnhancement();
 
-	void setResolution(int width, int height);
 	void setScaleFactor(short index);
-
 	void setSigmaSpatial(int value);
 	void setSigmaRange(int value);
 	void setSigmaCredMap(int value);
@@ -68,6 +63,7 @@ public:
 	void printAbout();
 private:
 	void updateDataFusion();
+	void setResolution(int width, int height);
 private:
 	c_DataFusion *m_DataFusion; // Instance to Data Fusion class
 
