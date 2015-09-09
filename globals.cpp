@@ -2,8 +2,8 @@
 
 // FGa, from previous tool
 int D_Fusion_ScaleFactor = 3;   // Scale factor: 8x
-int D_Fusion_2D_3D_2DW = 640; // By default we booked the maximum memory, considering VGA Res
-int D_Fusion_2D_3D_2DH = 480;
+int D_Fusion_2D_3D_2DW = 0; // By default we booked the maximum memory, considering VGA Res
+int D_Fusion_2D_3D_2DH = 0;
 int D_Fusion_2D_3D_2DSIZE;
 int D_Fusion_2D_3D_2DSIZE_RGB;
 

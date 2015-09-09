@@ -177,6 +177,10 @@ public:
     void SetSigmaR(float p_fVal); // Set sigma range
     void SetSigmaQ(float p_fVal); // Set sigma Q
 
+    float GetSigmaS() const; // Get sigma spatial
+    float GetSigmaR() const; // Get sigma range
+    float GetSigmaQ() const; // Get sigma Q
+
     void DataProcessing(u16* p_usDepthData, u08* p_ucRGBData, s16 p_usFIlterType); // Data processing and internal strcuture update
     /** \brief A Bilateral Filter filter implementation.
      * \note For more information please see

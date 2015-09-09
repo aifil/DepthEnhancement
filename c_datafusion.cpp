@@ -315,6 +315,21 @@ void c_DataFusion::SetSigmaQ(float p_fVal)
     m_DataFusion.m_Set.m_fSigma_Q = p_fVal;
 }
 
+float c_DataFusion::GetSigmaS() const 
+{
+    return m_DataFusion.m_Set.m_fSigma_spatial;
+}
+
+float c_DataFusion::GetSigmaR() const 
+{
+    return m_DataFusion.m_Set.m_fSigma_range;
+}
+
+float c_DataFusion::GetSigmaQ() const 
+{
+    return m_DataFusion.m_Set.m_fSigma_Q;
+}
+
 /* Compute credibility map Q
  */
 void c_DataFusion::Compute_Q_D()
