@@ -4,7 +4,7 @@
 * Website: http://www.frederic-garcia-becerro.com
 */
 
-#include "mainclass.h"
+#include "depth_enhancement.h"
 
 DepthEnhancement::DepthEnhancement() : resultIndex(0), filterIndex(0), m_DataFusion(NULL) {}
 DepthEnhancement::~DepthEnhancement()

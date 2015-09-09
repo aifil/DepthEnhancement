@@ -4,11 +4,11 @@
 * Website: http://www.frederic-garcia-becerro.com
 */
 
-#include "mainwindow.h"
-#include <QApplication>
+#include "depth_enhancement.h"
 
 int main(int argc, char *argv[])
 {
+
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
