@@ -58,99 +58,99 @@
 // Filter type
 typedef enum
 {
-    BF_FILTER       = 0, // Bilateral Filter
-    JBU_FILTER      = 1, // JBU Filter
-    PWAS_FILTER     = 2, // PWAS Filter
-    PWAS_RGB_FILTER = 3, // PWAS Filter with I RGB
-    UML_FILTER      = 4, // UML Filter, second PWAS neglected, values directly from high-res D   
-    UML_RGB_FILTER  = 5, // UML Filter, second PWAS neglected, values directly from high-res D and I RGB
-    RGBD_FILTER     = 6, // RGB-D Filter
-    LITERATURE_FILTERS    = 7  // Literature Filters
+	BF_FILTER       = 0, // Bilateral Filter
+	JBU_FILTER      = 1, // JBU Filter
+	PWAS_FILTER     = 2, // PWAS Filter
+	PWAS_RGB_FILTER = 3, // PWAS Filter with I RGB
+	UML_FILTER      = 4, // UML Filter, second PWAS neglected, values directly from high-res D   
+	UML_RGB_FILTER  = 5, // UML Filter, second PWAS neglected, values directly from high-res D and I RGB
+	RGBD_FILTER     = 6, // RGB-D Filter
+	LITERATURE_FILTERS    = 7  // Literature Filters
 } DataFusion_FilterType;
 
 typedef struct
 {
-    s32 m_lMemSize;
-    s32 m_lMemUsed;
-    s08* m_pMemPointer;
+	s32 m_lMemSize;
+	s32 m_lMemUsed;
+	s08* m_pMemPointer;
 }T_Memory_St;
 
 typedef struct
 {
-    f32 m_fSigma_range;	// 0 ..1
-    f32 m_fSigma_spatial;
-    f32 m_fSigma_Q;
-    s16 m_sScaleFactor;	// Scale factor to which the depth data is downsampled
+	f32 m_fSigma_range;	// 0 ..1
+	f32 m_fSigma_spatial;
+	f32 m_fSigma_Q;
+	s16 m_sScaleFactor;	// Scale factor to which the depth data is downsampled
 }T_DataFusion_Set;
 
 typedef struct
 {
-    f32 b1;
-    f32 b2;
-    f32 a0;
-    f32 a1;
-    f32 a2;
-    f32 a3;
-    f32 coefp;
-    f32 coefn;
+	f32 b1;
+	f32 b2;
+	f32 a0;
+	f32 a1;
+	f32 a2;
+	f32 a3;
+	f32 coefp;
+	f32 coefn;
 }T_Gaussian_Rec_St;
 
 typedef struct
 {
-    T_DataFusion_Set m_Set;
-    T_Gaussian_Rec_St m_StGaussian;
-    short m_sInitOk;
-    s16 m_h;
-    s16 m_w;
-    s16 m_h_original;
-    s16 m_w_original;
-    s16 m_nr_shift;
-    s16 m_radius;
-    u08 m_ucaTable[MLF_APP_2D_RANGE];          // Gaussian on intensity data
-    u08 m_ucaTableBF[MLF_APP_INTENSITY_RANGE]; // Gaussian on depth data
-    s32 *m_pdaImgBox;
-    u16 *m_pt_J_BF_DS;
-    s16 m_saDxx[16][16][4];
-    //RGB-D Filter
-    u08 *m_pt_I_RGB;
-    u08 *m_pt_I_GRAY;
-    u08 *m_pt_I_R;
-    u08 *m_pt_I_G;
-    u08 *m_pt_I_B;
-    u08 *m_pt_I_GRAY_DS;
-    u08 *m_pt_I_R_DS;
-    u08 *m_pt_I_G_DS;
-    u08 *m_pt_I_B_DS;
-    u16 *m_pt_D;
-    u16 *m_pt_D_DS;
-    u08 *m_pt_Q;
-    u08 *m_pt_Q_DS;
-    u08 *m_pt_BetaValue;    // Image that contains the beta value to merge J_2 with D
-    u08 *m_pt_BetaChannel;  // Image that indicates from which channel (RGB) the Beta Value has been computed
-    u16 *m_pt_J;    
-    s32 *m_pt_Jk_level0_R;
-    s32 *m_pt_Jk_level1_R;
-    s32 *m_pt_Jk_level0_G;
-    s32 *m_pt_Jk_level1_G;
-    s32 *m_pt_Jk_level0_B;
-    s32 *m_pt_Jk_level1_B;
-    s32 *m_pt_Jk_level0_GRAY;
-    s32 *m_pt_Jk_level1_GRAY;
-    s32 *m_pt_Wk_R;
-    s32 *m_pt_Wk_G;
-    s32 *m_pt_Wk_B;
-    s32 *m_pt_Wk_GRAY;
+	T_DataFusion_Set m_Set;
+	T_Gaussian_Rec_St m_StGaussian;
+	short m_sInitOk;
+	s16 m_h;
+	s16 m_w;
+	s16 m_h_original;
+	s16 m_w_original;
+	s16 m_nr_shift;
+	s16 m_radius;
+	u08 m_ucaTable[MLF_APP_2D_RANGE];          // Gaussian on intensity data
+	u08 m_ucaTableBF[MLF_APP_INTENSITY_RANGE]; // Gaussian on depth data
+	s32 *m_pdaImgBox;
+	u16 *m_pt_J_BF_DS;
+	s16 m_saDxx[16][16][4];
+	//RGB-D Filter
+	u08 *m_pt_I_RGB;
+	u08 *m_pt_I_GRAY;
+	u08 *m_pt_I_R;
+	u08 *m_pt_I_G;
+	u08 *m_pt_I_B;
+	u08 *m_pt_I_GRAY_DS;
+	u08 *m_pt_I_R_DS;
+	u08 *m_pt_I_G_DS;
+	u08 *m_pt_I_B_DS;
+	u16 *m_pt_D;
+	u16 *m_pt_D_DS;
+	u08 *m_pt_Q;
+	u08 *m_pt_Q_DS;
+	u08 *m_pt_BetaValue;    // Image that contains the beta value to merge J_2 with D
+	u08 *m_pt_BetaChannel;  // Image that indicates from which channel (RGB) the Beta Value has been computed
+	u16 *m_pt_J;    
+	s32 *m_pt_Jk_level0_R;
+	s32 *m_pt_Jk_level1_R;
+	s32 *m_pt_Jk_level0_G;
+	s32 *m_pt_Jk_level1_G;
+	s32 *m_pt_Jk_level0_B;
+	s32 *m_pt_Jk_level1_B;
+	s32 *m_pt_Jk_level0_GRAY;
+	s32 *m_pt_Jk_level1_GRAY;
+	s32 *m_pt_Wk_R;
+	s32 *m_pt_Wk_G;
+	s32 *m_pt_Wk_B;
+	s32 *m_pt_Wk_GRAY;
 #ifdef	MLF_BackGround_Counter
-    s32 *m_pt_Jk_level0_R_BG;
-    s32 *m_pt_Jk_level1_R_BG;
-    s32 *m_pt_Jk_level0_G_BG;
-    s32 *m_pt_Jk_level1_G_BG;
-    s32 *m_pt_Jk_level0_B_BG;
-    s32 *m_pt_Jk_level1_B_BG;
-    s32 *m_pt_Jk_level0_GRAY_BG;
-    s32 *m_pt_Jk_level1_GRAY_BG;
+	s32 *m_pt_Jk_level0_R_BG;
+	s32 *m_pt_Jk_level1_R_BG;
+	s32 *m_pt_Jk_level0_G_BG;
+	s32 *m_pt_Jk_level1_G_BG;
+	s32 *m_pt_Jk_level0_B_BG;
+	s32 *m_pt_Jk_level1_B_BG;
+	s32 *m_pt_Jk_level0_GRAY_BG;
+	s32 *m_pt_Jk_level1_GRAY_BG;
 #endif
-    //RGB-D Filter end
+	//RGB-D Filter end
 }T_DataFusion_St;
 
 /** \brief Data Fusion class.
@@ -160,108 +160,108 @@ typedef struct
 class c_DataFusion
 {
 public:
-    c_DataFusion(s16 p_sImageWidth=320, s16 p_sImageHeight=240, s16 p_sNr_shift=D_Fusion_ScaleFactor);
-    ~c_DataFusion();
+	c_DataFusion(s16 p_sImageWidth=320, s16 p_sImageHeight=240, s16 p_sNr_shift=D_Fusion_ScaleFactor);
+	~c_DataFusion();
 
-    u16* GetEnhancedDepthData(); // Returns the enhanced depth data (after filtering)
-    u08* GetGuidanceImageRGB(); // Returns the guidance image I (RGB)
-    u08* GetGuidanceImage(); // Returns the guidance image I
-    u08* GetGuidanceImage_ds(); // Returns the downsampled guidance image I_ds
-    u16* GetDepthMap(); // Returns the input depth map D
-    u16* GetDepthMap_ds(); // Returns the downsampled input depth map D_ds
-    u08* GetCredibilityMap(); // Returns the credibility map Q
-    u08* GetCredibilityMap_ds(); // Returns the downsampled credibility map Q
-    u08* GetBlendingMask(); // Returns the blending mask B
+	u16* GetEnhancedDepthData(); // Returns the enhanced depth data (after filtering)
+	u08* GetGuidanceImageRGB(); // Returns the guidance image I (RGB)
+	u08* GetGuidanceImage(); // Returns the guidance image I
+	u08* GetGuidanceImage_ds(); // Returns the downsampled guidance image I_ds
+	u16* GetDepthMap(); // Returns the input depth map D
+	u16* GetDepthMap_ds(); // Returns the downsampled input depth map D_ds
+	u08* GetCredibilityMap(); // Returns the credibility map Q
+	u08* GetCredibilityMap_ds(); // Returns the downsampled credibility map Q
+	u08* GetBlendingMask(); // Returns the blending mask B
 
-    void SetSigmaS(float p_fVal); // Set sigma spatial
-    void SetSigmaR(float p_fVal); // Set sigma range
-    void SetSigmaQ(float p_fVal); // Set sigma Q
+	void SetSigmaS(float p_fVal); // Set sigma spatial
+	void SetSigmaR(float p_fVal); // Set sigma range
+	void SetSigmaQ(float p_fVal); // Set sigma Q
 
-    float GetSigmaS() const; // Get sigma spatial
-    float GetSigmaR() const; // Get sigma range
-    float GetSigmaQ() const; // Get sigma Q
+	float GetSigmaS() const; // Get sigma spatial
+	float GetSigmaR() const; // Get sigma range
+	float GetSigmaQ() const; // Get sigma Q
 
-    void DataProcessing(u16* p_usDepthData, u08* p_ucRGBData, s16 p_usFIlterType); // Data processing and internal strcuture update
-    /** \brief A Bilateral Filter filter implementation.
-     * \note For more information please see
-     * <b>C. Tomasi and R. Manduchi. Bilateral filtering for gray and color images.
-     * In ICCV, pages 839–846, 1998.</b>
-     */
-    short BF_Filter(); // Apply Bilateral Filter (BF Filter)
-    /** \brief A Joint Bilateral Upsampling (JBU) filter implementation.
-     * \note For more information please see
-     * <b>J. Kopf, M. Cohen, D. Lischinski, and M. Uyttendaele. Joint Bilateral Upsampling.
-     * In SIGGRAPH ’07: ACM SIGGRAPH 2007 papers, page 96, New York, NY, USA, 2007. ACM.</b>
-     */
-    short JBU_Filter(); // Apply Joint Bilateral Upsampling Filter (JBU Filter)
-    /** \brief A Pixel Weighted Average Strategy (PWAS) filter implementation.
-     * \note For more information please see
-     * <b>F. Garcia, B. Mirbach, B. Ottersten, F. Grandidier, and A. Cuesta. Pixel Weighted Average Strategy for Depth Sensor Data Fusion.
-     * In International Conference on Image Processing (ICIP), pages 2805–2808, September 2010.</b>
-     */
-    short PWAS_Filter();
-    /** \brief A Pixel Weighted Average Strategy (PWAS) filter implementation that considers RGB guidance images.
-     * \note For more information please see
-     * <b>F. Garcia, B. Mirbach, B. Ottersten, F. Grandidier, and A. Cuesta. Pixel Weighted Average Strategy for Depth Sensor Data Fusion.
-     * In International Conference on Image Processing (ICIP), pages 2805–2808, September 2010.</b>
-     */
-    short PWAS_RGB_Filter();
-    /** \brief A Unified Multi-Lateral (UML) filter implementation.
-     * \note For more information please see
-     * <b>F. Garcia, D. Aouada, B. Mirbach, T. Solignac, and B. Ottersten. A New Multi-lateral Filter for Real-Time Depth Enhancement.
-     * In Advanced Video and Signal-Based Surveillance (AVSS), 2011.</b>
-     */
-    short UML_Filter();
-    /** \brief A Unified Multi-Lateral (UML) filter implementation  that considers RGB guidance images.
-     * \note For more information please see
-     * <b>F. Garcia, D. Aouada, B. Mirbach, T. Solignac, and B. Ottersten. A New Multi-lateral Filter for Real-Time Depth Enhancement.
-     * In Advanced Video and Signal-Based Surveillance (AVSS), 2011.</b>
-     */
-    short UML_RGB_Filter();
-    /** \brief A Joint Bilateral Upsampling (JBU) filter implementation.
-     * \note For more information please see
-     * <b>J. Kopf, M. Cohen, D. Lischinski, and M. Uyttendaele. Joint Bilateral Upsampling.
-     * In SIGGRAPH ’07: ACM SIGGRAPH 2007 papers, page 96, New York, NY, USA, 2007. ACM.</b>
-     */
-    short JBU_Filter_Kopf();
-    /** \brief A New Joint Bilateral Upsampling (NJBU) filter implementation.
-     * \note For more information please see
-     * <b>S.-Y. Kim, J.-H. Cho, A. Koschan, and M. Abidi. Spatial and Temporal Enhancement of Depth Images Captured by a Time-of-Flight Depth Sensor.
-     * In International Conference on Pattern Recognition (ICPR), pages 2358–2361, August 2010.</b>
-     */
-    short NJBU_Filter_Kim();
-    /** \brief A Noise-Aware Filter for real-time Depth Upsampling filter implementation.
-     * \note For more information please see
-     * <b>D. Chan, H. Buisman, C. Theobalt, and S. Thrun. A noise-aware filter for real-time depth upsampling.
-     * In Workshop on Multi-camera and Multi-modal Sensor Fusion Algorithms and Applications (ECCVW), 2008.</b>
-     */
-    short NAFDU_Filter_Chan();
+	void DataProcessing(u16* p_usDepthData, u08* p_ucRGBData, s16 p_usFIlterType); // Data processing and internal strcuture update
+	/** \brief A Bilateral Filter filter implementation.
+	 * \note For more information please see
+	 * <b>C. Tomasi and R. Manduchi. Bilateral filtering for gray and color images.
+	 * In ICCV, pages 839–846, 1998.</b>
+	 */
+	short BF_Filter(); // Apply Bilateral Filter (BF Filter)
+	/** \brief A Joint Bilateral Upsampling (JBU) filter implementation.
+	 * \note For more information please see
+	 * <b>J. Kopf, M. Cohen, D. Lischinski, and M. Uyttendaele. Joint Bilateral Upsampling.
+	 * In SIGGRAPH ’07: ACM SIGGRAPH 2007 papers, page 96, New York, NY, USA, 2007. ACM.</b>
+	 */
+	short JBU_Filter(); // Apply Joint Bilateral Upsampling Filter (JBU Filter)
+	/** \brief A Pixel Weighted Average Strategy (PWAS) filter implementation.
+	 * \note For more information please see
+	 * <b>F. Garcia, B. Mirbach, B. Ottersten, F. Grandidier, and A. Cuesta. Pixel Weighted Average Strategy for Depth Sensor Data Fusion.
+	 * In International Conference on Image Processing (ICIP), pages 2805–2808, September 2010.</b>
+	 */
+	short PWAS_Filter();
+	/** \brief A Pixel Weighted Average Strategy (PWAS) filter implementation that considers RGB guidance images.
+	 * \note For more information please see
+	 * <b>F. Garcia, B. Mirbach, B. Ottersten, F. Grandidier, and A. Cuesta. Pixel Weighted Average Strategy for Depth Sensor Data Fusion.
+	 * In International Conference on Image Processing (ICIP), pages 2805–2808, September 2010.</b>
+	 */
+	short PWAS_RGB_Filter();
+	/** \brief A Unified Multi-Lateral (UML) filter implementation.
+	 * \note For more information please see
+	 * <b>F. Garcia, D. Aouada, B. Mirbach, T. Solignac, and B. Ottersten. A New Multi-lateral Filter for Real-Time Depth Enhancement.
+	 * In Advanced Video and Signal-Based Surveillance (AVSS), 2011.</b>
+	 */
+	short UML_Filter();
+	/** \brief A Unified Multi-Lateral (UML) filter implementation  that considers RGB guidance images.
+	 * \note For more information please see
+	 * <b>F. Garcia, D. Aouada, B. Mirbach, T. Solignac, and B. Ottersten. A New Multi-lateral Filter for Real-Time Depth Enhancement.
+	 * In Advanced Video and Signal-Based Surveillance (AVSS), 2011.</b>
+	 */
+	short UML_RGB_Filter();
+	/** \brief A Joint Bilateral Upsampling (JBU) filter implementation.
+	 * \note For more information please see
+	 * <b>J. Kopf, M. Cohen, D. Lischinski, and M. Uyttendaele. Joint Bilateral Upsampling.
+	 * In SIGGRAPH ’07: ACM SIGGRAPH 2007 papers, page 96, New York, NY, USA, 2007. ACM.</b>
+	 */
+	short JBU_Filter_Kopf();
+	/** \brief A New Joint Bilateral Upsampling (NJBU) filter implementation.
+	 * \note For more information please see
+	 * <b>S.-Y. Kim, J.-H. Cho, A. Koschan, and M. Abidi. Spatial and Temporal Enhancement of Depth Images Captured by a Time-of-Flight Depth Sensor.
+	 * In International Conference on Pattern Recognition (ICPR), pages 2358–2361, August 2010.</b>
+	 */
+	short NJBU_Filter_Kim();
+	/** \brief A Noise-Aware Filter for real-time Depth Upsampling filter implementation.
+	 * \note For more information please see
+	 * <b>D. Chan, H. Buisman, C. Theobalt, and S. Thrun. A noise-aware filter for real-time depth upsampling.
+	 * In Workshop on Multi-camera and Multi-modal Sensor Fusion Algorithms and Applications (ECCVW), 2008.</b>
+	 */
+	short NAFDU_Filter_Chan();
 
 private:
-    T_DataFusion_St m_DataFusion;
-    T_Memory_St m_StMem;
-    std::vector<char> m_cMem; // Memory handling
+	T_DataFusion_St m_DataFusion;
+	T_Memory_St m_StMem;
+	std::vector<char> m_cMem; // Memory handling
 
-    s32 Alloc_Mem(T_Memory_St* p_pSt,char **p_ppVoid, s32 p_lMemSize);
-    void Compute_Q_D();
-    void Compute_Q_D_RGBD_Filter();
-    void ComputeBlendingMask(); // Compute the blending mask (beta) that combines J_2 with J_3 or D
-    void ConvertToGrayscale(const unsigned char* p_ptImgIn, long p_lImgSize, unsigned char* p_ptImgOutC);
-    void GetMinMaxVal(u08* p_pucMin, u08* p_pucMax, const u08 *p_pucImg, s32 p_lLen);    
-    void GetMinMaxVal(u16* p_pusMin, u16* p_pusMax, const u16 *p_pusImg, s32 p_lLen);
-    void GetMinMaxVal_RGB(u08* p_pucMin, u08* p_pucMax, const u08 *p_pucImg_R, const u08 *p_pucImg_G, const u08 *p_pucImg_B, s32 p_lLen);
-    void Downsample(const u08 *p_pcImgIn, u08 *p_pcImgOut, s16 h, s16 w, s16 scale_exp);
-    void Downsample(const u16 *p_pcImgIn, u16 *p_pcImgOut, s16 h, s16 w, s16 scale_exp);
-    void Upsample(const u16 *p_psImgIn, u16 *p_psImgOut, s16 h, s16 w, s16 scale_exp);
-    void FillColorWeightedTable(u08* p_pucTable, f32 p_pfSigma_range, s16 len);
-    void Gaussian_Recursive_Order0_Init(f32 sigma, s16 h, s16 w, T_Gaussian_Rec_St* p_StOut);
-    void Gaussian_Recursive_Order0(const T_Gaussian_Rec_St* p_StSet,s32 *p_pdaImg,s32 *p_pdaImgTemp,s16 h,s16 w);
-    void Gaussian_Recursive_x(s32 *p_pdImgOut,const s32 *p_pdImgIn, s16 w, s16 h,
-                const f32 a0, const f32 p_dA1, const f32 a2, const f32 a3,
-                const f32 b1, const f32 b2, const f32 coefp, const f32 coefn);
-    void Gaussian_Recursive_y(s32 *p_pdImgOut,const s32 *p_pdImgIn, s16 w, s16 h,
-                const f32 a0, const f32 p_dA1, const f32 a2, const f32 a3,
-                const f32 b1, const f32 b2, const f32 coefp, const f32 coefn);
+	s32 Alloc_Mem(T_Memory_St* p_pSt,char **p_ppVoid, s32 p_lMemSize);
+	void Compute_Q_D();
+	void Compute_Q_D_RGBD_Filter();
+	void ComputeBlendingMask(); // Compute the blending mask (beta) that combines J_2 with J_3 or D
+	void ConvertToGrayscale(const unsigned char* p_ptImgIn, long p_lImgSize, unsigned char* p_ptImgOutC);
+	void GetMinMaxVal(u08* p_pucMin, u08* p_pucMax, const u08 *p_pucImg, s32 p_lLen);    
+	void GetMinMaxVal(u16* p_pusMin, u16* p_pusMax, const u16 *p_pusImg, s32 p_lLen);
+	void GetMinMaxVal_RGB(u08* p_pucMin, u08* p_pucMax, const u08 *p_pucImg_R, const u08 *p_pucImg_G, const u08 *p_pucImg_B, s32 p_lLen);
+	void Downsample(const u08 *p_pcImgIn, u08 *p_pcImgOut, s16 h, s16 w, s16 scale_exp);
+	void Downsample(const u16 *p_pcImgIn, u16 *p_pcImgOut, s16 h, s16 w, s16 scale_exp);
+	void Upsample(const u16 *p_psImgIn, u16 *p_psImgOut, s16 h, s16 w, s16 scale_exp);
+	void FillColorWeightedTable(u08* p_pucTable, f32 p_pfSigma_range, s16 len);
+	void Gaussian_Recursive_Order0_Init(f32 sigma, s16 h, s16 w, T_Gaussian_Rec_St* p_StOut);
+	void Gaussian_Recursive_Order0(const T_Gaussian_Rec_St* p_StSet,s32 *p_pdaImg,s32 *p_pdaImgTemp,s16 h,s16 w);
+	void Gaussian_Recursive_x(s32 *p_pdImgOut,const s32 *p_pdImgIn, s16 w, s16 h,
+				const f32 a0, const f32 p_dA1, const f32 a2, const f32 a3,
+				const f32 b1, const f32 b2, const f32 coefp, const f32 coefn);
+	void Gaussian_Recursive_y(s32 *p_pdImgOut,const s32 *p_pdImgIn, s16 w, s16 h,
+				const f32 a0, const f32 p_dA1, const f32 a2, const f32 a3,
+				const f32 b1, const f32 b2, const f32 coefp, const f32 coefn);
 };
 
 #endif // C_DATAFUSION_H
