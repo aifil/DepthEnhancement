@@ -1,5 +1,5 @@
-#ifndef GLOBALS_H
-#define GLOBALS_H
+#ifndef GLOBALS_ENH_H
+#define GLOBALS_ENH_H
 
 #define D_QUANTIZATION_RANGE_3D		300 //160 /* It's related to the range data, sigmas, etc */
 #define D_QUANTIZATION_RANGE_2D		50 //16

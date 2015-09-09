@@ -1,4 +1,4 @@
-#include "globals.h"
+#include "globals_enh.h"
 
 // FGa, from previous tool
 int D_Fusion_ScaleFactor = 3;   // Scale factor: 8x
