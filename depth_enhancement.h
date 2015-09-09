@@ -28,7 +28,7 @@ enum
 	PWAS_ENH,
 	JBU_ENH,
 	BIL_ENH,
-	JBU_ENH,
+	JBUK_ENH,
 	NJBU_ENH,
 	NAFDU_ENH
 } Enhancement_filters;

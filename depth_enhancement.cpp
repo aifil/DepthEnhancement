@@ -6,7 +6,7 @@
 
 #include "depth_enhancement.h"
 
-DepthEnhancement::DepthEnhancement() : resultIndex(0), filterIndex(0), m_DataFusion(NULL) {}
+DepthEnhancement::DepthEnhancement() : m_DataFusion(NULL) {}
 DepthEnhancement::~DepthEnhancement()
 {
 	delete m_DataFusion;
@@ -131,7 +131,7 @@ void DepthEnhancement::applyFilter(int filterIndex)
 			m_DataFusion->DataProcessing((unsigned short*)m_cvDepthImage.data, NULL, BF_FILTER);
 			m_DataFusion->BF_Filter();
 			break;
-		case JBU_ENH: // JBU Filter (Kopf et al.)
+		case JBUK_ENH: // JBU Filter (Kopf et al.)
 			m_DataFusion->DataProcessing((unsigned short*)m_cvDepthImage.data, (unsigned char*)m_cvRGBImage.data, LITERATURE_FILTERS);
 			m_DataFusion->JBU_Filter_Kopf();
 			break;
